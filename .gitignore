@@ -5,7 +5,7 @@ bin
 .idea/workspace.xml
 .idea/libraries
 out
-project
+project/target
 target
 build
 .gradle
