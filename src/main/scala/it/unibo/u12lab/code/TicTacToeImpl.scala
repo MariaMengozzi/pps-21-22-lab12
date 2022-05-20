@@ -4,14 +4,14 @@ import java.io.FileInputStream
 
 import alice._
 import alice.tuprolog.{Term, Theory}
-import Scala2P._
+import Scala2P.{*, given}
 
 /**
   * Created by mirko on 4/10/17.
   */
 class TicTacToeImpl(fileName: String) extends TicTacToe {
 
-  private val engine = mkPrologEngine(new Theory(getClass.getResourceAsStream(fileName)))
+  private val engine = mkPrologEngine(Theory.parse(getClass.getResourceAsStream(fileName)))
   private var tboard: Term = null
   createBoard()
 
@@ -23,10 +23,8 @@ class TicTacToeImpl(fileName: String) extends TicTacToe {
   override def checkCompleted(): Boolean =
     solveWithSuccess(engine,"board(B),boardfilled(B)")
 
-
   override def checkVictory(): Boolean =
     solveWithSuccess(engine,"board(B),threeinarow(B)")
-
 
   override def isAFreeCell(i: Int, j: Int): Boolean =
     solveWithSuccess(engine,s"board(B),not(filledsquare(B,${i*3+j+1}))")

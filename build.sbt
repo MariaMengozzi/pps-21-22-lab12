@@ -1,5 +1,6 @@
 name := "pps-lab-scala-prolog-integration"
 
+scalaVersion := "3.1.1"
 libraryDependencies += "it.unibo.alice.tuprolog" % "2p-core" % "4.1.1"
 libraryDependencies += "it.unibo.alice.tuprolog" % "2p-ui" % "4.1.1"
 
