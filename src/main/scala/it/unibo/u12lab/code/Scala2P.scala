@@ -11,8 +11,8 @@ object Scala2P:
     solveInfo.getTerm(s)
 
   given Conversion[String, Term] = Term.createTerm(_)
-  given Conversion[Seq[_], Term] = _.mkString("[,", ",", "]")
-  given Conversion[String, Theory] = new Theory(_)
+  given Conversion[Seq[_], Term] =  _.mkString("[",",","]")
+  given Conversion[String, Theory] = Theory.parseLazilyWithStandardOperators(_)
 
   def mkPrologEngine(theory: Theory): Term => LazyList[SolveInfo] =
     val engine = Prolog()
