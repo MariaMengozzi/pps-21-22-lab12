@@ -15,10 +15,13 @@ ttt(Turn, Type) :-
     progress(Board, Turn, Type, _), !. % don't go on to the next game
 
 % progress is responsible for playing a single game of tic tac toe.
-%   It checks whether the game is over, and, if not, makes the next
-%   move happen.  It then calls itself recursively.  If at any time, 
-%   it detects that the game is over, it prints a message and quits.
-%
+%   It checks whether the game is over (first rule), and, if not (so execute the second rule), makes the next
+%   move happen.  It then calls itself recursively.  If at any time,
+%   it detects that the game is over (first rule), it prints a message and quits.
+
+%   NOTE: in this case is fundamental the rule order!
+        (first is checked if the game is over and if not makes the next move)
+
 progress(OldBoard, _, _, NewBoard) :-
     gameover(OldBoard), !,
     nl, print('Game is over.'), nl,
@@ -33,7 +36,7 @@ progress(OBoard, Turn, Type, NBoard) :-
     switch(Turn, NTurn),
     progress(TBoard, NTurn, NType, NBoard).
 
-% switch flips the state between Human and Machine and betwee X and O.
+% switch flips the state between Human and Machine and between X and O.
 %
 switch('X', 'O').
 switch('O', 'X').

@@ -9,3 +9,10 @@ project/target
 target
 build
 .gradle
+
+idea/usage.statistics.xml
+idea/tasks.xml
+idea/shelf
+scalafmt.conf
+.bsp
+project/*

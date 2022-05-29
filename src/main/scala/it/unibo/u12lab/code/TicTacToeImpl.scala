@@ -1,9 +1,8 @@
 package it.unibo.u12lab.code
 
 import java.io.FileInputStream
-
-import alice._
-import alice.tuprolog.{Term, Theory}
+import alice.*
+import alice.tuprolog.{Struct, Term, Theory, Var}
 import Scala2P.{*, given}
 
 /** Created by mirko on 4/10/17. */
@@ -42,6 +41,8 @@ class TicTacToeImpl(fileName: String) extends TicTacToe:
       k = i * 3 + j + 1
     } yield k).head
     // change above, by calling predicate 'response'
+    //val input = new Struct("response", tboard, "'O'" , Var.anonymous())
+    //engine(input) map (extractTerm(_,1)) foreach (println(_))
     setCell(pos, "'O'")
     Array((pos - 1) / 3, (pos - 1) % 3)
 
