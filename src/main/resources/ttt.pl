@@ -20,7 +20,7 @@ ttt(Turn, Type) :-
 %   it detects that the game is over (first rule), it prints a message and quits.
 
 %   NOTE: in this case is fundamental the rule order!
-        (first is checked if the game is over and if not makes the next move)
+%        (first is checked if the game is over and if not makes the next move)
 
 progress(OldBoard, _, _, NewBoard) :-
     gameover(OldBoard), !,

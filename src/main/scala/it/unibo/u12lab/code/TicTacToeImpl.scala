@@ -34,15 +34,16 @@ class TicTacToeImpl(fileName: String) extends TicTacToe:
 
   override def setComputerCell(): Array[Int] =
     // a solution which just seeks for the first free cell
-    val pos = (for {
+    /*val pos = (for {
       i <- 0 to 2
       j <- 0 to 2
       if isAFreeCell(i, j)
       k = i * 3 + j + 1
-    } yield k).head
+    } yield k).head*/
     // change above, by calling predicate 'response'
-    //val input = new Struct("response", tboard, "'O'" , Var.anonymous())
-    //engine(input) map (extractTerm(_,1)) foreach (println(_))
+    tboard = solveOneAndGetTerm(engine, "board(B)", "B")
+    val input = new Struct("response", tboard, "'O'" , Var.anonymous())
+    val pos = ((engine(input) map (extractTerm(_,2))).head).toString.toInt
     setCell(pos, "'O'")
     Array((pos - 1) / 3, (pos - 1) % 3)
 
